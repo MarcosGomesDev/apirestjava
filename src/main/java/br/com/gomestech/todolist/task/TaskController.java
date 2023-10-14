@@ -69,7 +69,8 @@ public class TaskController {
       return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You don't have permission to update this task");
     }
 
-    Utils.copyNonNullProperties(taskModel, taskModel);
+    Utils.copyNonNullProperties(taskModel, task);
+
     var taskUpdated = this.taskRepository.save(task);
 
     return ResponseEntity.status(HttpStatus.OK).body(taskUpdated);
